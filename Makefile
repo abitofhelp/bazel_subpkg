@@ -9,16 +9,13 @@ BAZEL_BUILD_OPTS:=--verbose_failures --sandbox_debug
 GOCMD=$(BZLPKG) run @io_bazel_rules_go//go
 PKG_DIR=$(PROJECT_DIR)/pkg
 
-ABC_LIB_DIR=$(PKG_DIR)/blob
+ABC_LIB_DIR=$(PKG_DIR)/abc
 ABC_LIB_WORKSPACE=//pkg/abc
-ABC_LIB_TARGET=$(ABC_WORKSPACE):abc
+ABC_LIB_TARGET=//pkg/abc:abc
 
 CMD_DIR=$(PROJECT_DIR)/cmd
-CMD_WORKSPACE=//cmd/abc
-CMD_TARGET=$(CMD_WORKSPACE):cmd
-
-build_all: build_golibrary build_csclibrary build_blob
-	#$(BZLPKG) build $(BAZEL_BUILD_OPTS) //...
+CMD_WORKSPACE=//cmd
+CMD_TARGET=//cmd:cmd
 
 build_abc_lib:
 	$(BZLPKG) build $(BAZEL_BUILD_OPTS) $(ABC_LIB_TARGET)
@@ -30,7 +27,7 @@ clean:
 	$(BZLPKG) clean --expunge --async
 
 expand_golang_build:
-	$(BZLPKG) query $(GOLIBRARY_LIB_TARGET) --output=build
+	$(BZLPKG) query $(ABC_LIB_TARGET) --output=build
 
 gazelle_generate_build_bazel:
 #	 This will generate new BUILD.bazel files for your project. You can run the same command in the future to update existing BUILD.bazel files to include new source files or options.
@@ -101,15 +98,15 @@ sync_from_gomod: go_mod_download go_mod_tidy go_mod_vendor go_mod_verify gazelle
 
 sync_from_gomod_force: go_mod_download go_mod_tidy go_mod_vendor go_mod_verify gazelle_generate_build_bazel gazelle_update_deps
 
-#tidy:
-#	@rm -rf vendor
-#	go mod tidy
-#	go mod vendor -v
-#
-#zap:
-#	@rm go.sum
-#	@rm -rf vendor
-#	go clean -modcache -cache
-#	go mod download
-#	go mod tidy
-#	go mod vendor -v
+tidy: clean
+	@rm -rf vendor
+	go mod tidy
+	go mod vendor -v
+
+zap: clean
+	@rm go.sum
+	@rm -rf vendor
+	go clean -modcache -cache
+	go mod download
+	go mod tidy
+	go mod vendor -v
