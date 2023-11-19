@@ -1,5 +1,5 @@
-load("@bazel_gazelle//:def.bzl", "gazelle")
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@bazel_gazelle//:def.bzl", "gazelle")
 
 # gazelle:prefix github.com/abitofhelp/bazel_subpkg/pkg/abc
 # gazelle:exclude vendor
@@ -14,4 +14,10 @@ go_library(
         "//pkg/abc/constants:go_default_library",
         "//pkg/abc/date:go_default_library",
     ],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":abc",
+    visibility = ["//visibility:public"],
 )
