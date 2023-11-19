@@ -1,6 +1,6 @@
 # bazel_subpkg
 
-This is a monorepo project that contains a single package, "abc", at this time.
+This is a monorepo project that contains a single package, "abc", which contains some subpackages.
 I am trying to figure out the following:
 
 * Do I have to have a BUILD.bazel file in each directory containing .go files within the 'abc' directory and its subdirectories? It seems like a lot of work when I only want to collect all of the .go files
