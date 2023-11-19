@@ -3,3 +3,16 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 # gazelle:prefix github.com/abitofhelp/bazel_subpkg/pkg/abc
 # gazelle:exclude vendor
 gazelle(name = "gazelle")
+
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "abc_lib",
+    srcs = [
+        "//pkg/abc/constants:constants.go",
+        "//pkg/abc/date:timezone.go",
+        "nobuildfile/hello.go",
+    ],
+    importpath = "github.com/abitofhelp/bazel_subpkg/pkg/abc",
+    visibility = ["//visibility:public"],
+)

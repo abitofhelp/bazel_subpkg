@@ -6,3 +6,7 @@ go_library(
     importpath = "github.com/abitofhelp/bazel_subpkg/pkg/abc/date",
     visibility = ["//visibility:public"],
 )
+
+exports_files(
+    srcs = ["timezone.go"]
+)
