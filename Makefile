@@ -17,7 +17,7 @@ CMD_DIR=$(PROJECT_DIR)/cmd
 CMD_WORKSPACE=//cmd
 CMD_TARGET=//cmd:cmd
 
-build_abc_lib:
+build_pkg_abc_lib:
 	$(BZLPKG) build $(BAZEL_BUILD_OPTS) $(ABC_LIB_TARGET)
 
 build_cmd:

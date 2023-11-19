@@ -68,16 +68,14 @@ gazelle_dependencies()
 ########################################################################################################################
 
 ## PROTOBUF ############################################################################################################
-http_archive(
-    name = "com_google_protobuf",
-    sha256 = "616bb3536ac1fff3fb1a141450fa28b875e985712170ea7f1bfe5e5fc41e2cd8",
-    strip_prefix = "protobuf-24.4",
-    urls = ["https://github.com/protocolbuffers/protobuf/archive/{version}.tar.gz".format(version = PROTOBUF_VERSION)],
-)
-
-load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
-
-protobuf_deps()
+#http_archive(
+#    name = "com_google_protobuf",
+#    sha256 = "616bb3536ac1fff3fb1a141450fa28b875e985712170ea7f1bfe5e5fc41e2cd8",
+#    strip_prefix = "protobuf-24.4",
+#    urls = ["https://github.com/protocolbuffers/protobuf/archive/{version}.tar.gz".format(version = PROTOBUF_VERSION)],
+#)
+#load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+#protobuf_deps()
 ########################################################################################################################
 
 ## GO_GOOGLEAPIS #######################################################################################################
@@ -99,18 +97,15 @@ protobuf_deps()
 ########################################################################################################################
 
 ### RULES_PROTO ########################################################################################################
-http_archive(
-    name = "rules_proto",
-    sha256 = "903af49528dc37ad2adbb744b317da520f133bc1cbbecbdd2a6c546c9ead080b",
-    strip_prefix = "rules_proto-6.0.0-rc0",
-    url = "https://github.com/bazelbuild/rules_proto/releases/download/6.0.0-rc0/rules_proto-{version}-rc0.tar.gz".format(version = RULES_PROTO_VERSION),
-)
-
-load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
-
-rules_proto_dependencies()
-
-rules_proto_toolchains()
+#http_archive(
+#    name = "rules_proto",
+#    sha256 = "903af49528dc37ad2adbb744b317da520f133bc1cbbecbdd2a6c546c9ead080b",
+#    strip_prefix = "rules_proto-6.0.0-rc0",
+#    url = "https://github.com/bazelbuild/rules_proto/releases/download/6.0.0-rc0/rules_proto-{version}-rc0.tar.gz".format(version = RULES_PROTO_VERSION),
+#)
+#load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+#rules_proto_dependencies()
+#rules_proto_toolchains()
 ########################################################################################################################
 
 ## BUILDTOOLS (Buildifier)##############################################################################################

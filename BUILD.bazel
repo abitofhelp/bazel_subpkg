@@ -4,6 +4,7 @@ load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 package(default_visibility = ["//visibility:public"])
 
 # gazelle:prefix github.com/abitofhelp/bazel_subpkg
+# gazelle:exclude vendor
 gazelle(name = "gazelle")
 
 buildifier(
