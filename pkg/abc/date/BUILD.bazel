@@ -8,5 +8,5 @@ go_library(
 )
 
 exports_files(
-    srcs = ["timezone.go"]
+    srcs = ["timezone.go"],
 )

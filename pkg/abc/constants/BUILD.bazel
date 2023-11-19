@@ -8,5 +8,5 @@ go_library(
 )
 
 exports_files(
-    srcs = ["constants.go"]
+    srcs = ["constants.go"],
 )
