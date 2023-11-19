@@ -1,12 +1,9 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
+# gazelle:go_naming_convention import_alias
 go_library(
-    name = "date_lib",
+    name = "date",
     srcs = ["timezone.go"],
     importpath = "github.com/abitofhelp/bazel_subpkg/pkg/abc/date",
     visibility = ["//visibility:public"],
-)
-
-exports_files(
-    srcs = ["timezone.go"],
 )
